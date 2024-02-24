@@ -1,10 +1,9 @@
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { Inter as FontSans } from "next/font/google";
+import { Montserrat } from "next/font/google";
 
-export const fontSans = FontSans({
+export const montserrat = Montserrat({
   subsets: ["latin"],
-  variable: "--font-sans",
 });
 
 type RootLayoutProps = Readonly<{ children: React.ReactNode }>;
@@ -15,8 +14,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable
+          "min-h-screen bg-background antialiased",
+          montserrat.className
         )}
       >
         {children}

@@ -11,6 +11,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 import Link from "next/link";
 // import {links} from '@/lib/data/links'
@@ -34,20 +35,22 @@ type NavDesktopProps = {
 
 const NavDesktop = ({ links }: NavDesktopProps) => {
   return (
-    <div className="flex justify-center items-center">
+    <div className="hidden lg:flex justify-center items-center gap-x-10">
       <LogoNav />
       <NavigationMenu>
-        <NavigationMenuList>
+        <NavigationMenuList className="gap-x-3 font-medium opacity-70">
           {links.map((link) => (
             <NavigationMenuItem key={link.title}>
               {link.category ? (
                 <>
                   <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul>
-                      {Object.values(link.category).map((category) => (
-                        <li key={category.title}>
-                          <NavigationMenuItem>
+                  <NavigationMenuContent className="min-w-48 pl-2 font-extralight py-2">
+                    <ul className="flex flex-col gap-y-2">
+                      {Object.values(link.category).map(
+                        (
+                          category // karena berbentuk object jadi ngambil data nya dengan cara Object.values agar menjadi array
+                        ) => (
+                          <NavigationMenuItem key={category.title}>
                             <Link
                               href={category.href}
                               suppressHydrationWarning={true}
@@ -55,8 +58,8 @@ const NavDesktop = ({ links }: NavDesktopProps) => {
                               {category.title}
                             </Link>
                           </NavigationMenuItem>
-                        </li>
-                      ))}
+                        )
+                      )}
                     </ul>
                   </NavigationMenuContent>
                 </>

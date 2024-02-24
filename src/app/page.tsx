@@ -1,6 +1,12 @@
 import Header from "@/components/common/Header";
-import Image from "next/image";
+import Hero from "@/components/sections/(HeroSection)/Hero";
 
 export default function Home() {
-  return <Header />;
+  //TODO: di dalam Home/dashboard ada herosection(carousel autoplay), preview categories, BestSellerProduct, Product list dengan slide/pagination(di kategorikan bg nya sesuai color kategori masing2)
+  return (
+    <>
+      <Header />
+      <Hero />
+    </>
+  );
 }
