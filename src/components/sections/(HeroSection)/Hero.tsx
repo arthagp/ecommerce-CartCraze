@@ -15,10 +15,10 @@ const Hero = () => {
         </div>
         {/* Bg-image */}
         <div>
-          <h1 className="text-4xl font-bold mb-4 leading-[50px]">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 leading-[50px]">
             Explore Our <br /> E-commerce Hub
           </h1>
-          <p className="text-lg mb-6 opacity-80">
+          <p className="text-lg mb-6 desc">
             Discover a new era of online shopping. Dive into our dynamic
             e-commerce platform, where convenience meets style. Browse, shop,
             and save on a wide array of products, from fashion to electronics,
@@ -26,7 +26,9 @@ const Hero = () => {
             shopping has never been smoother. Join us and experience the future
             of retail today.
           </p>
-          <Button className="bg-transparent border rounded-md hover:bg-white hover:text-black">SHOP NOW</Button>
+          <Button className="bg-transparent border rounded-md hover:bg-white hover:text-black">
+            SHOP NOW
+          </Button>
         </div>
       </div>
       {/* RIGHT */}

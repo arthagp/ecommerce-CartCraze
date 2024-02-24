@@ -1,4 +1,5 @@
 import Header from "@/components/common/Header";
+import PreviewProdCategories from "@/components/sections/(CategoriesProduct)/PreviewProdCategories";
 import Hero from "@/components/sections/(HeroSection)/Hero";
 
 export default function Home() {
@@ -7,6 +8,7 @@ export default function Home() {
     <>
       <Header />
       <Hero />
+      <PreviewProdCategories />
     </>
   );
 }
