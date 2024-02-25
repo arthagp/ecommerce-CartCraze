@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { FiSearch } from "react-icons/fi";
 import { SlBasket } from "react-icons/sl";
@@ -8,13 +10,27 @@ import { links as linksNav } from "@/lib/data/links";
 import { FaRegUser } from "react-icons/fa";
 
 const Header = () => {
-  //TODO: Di dalam header ini ada header meliputi(login/register, cart, favorit), dan terdapat navbar untuk desktop/mobile
-  //TODO: untuk data link navbar yang ada pada shop di tidak perlu
-
   const iconSize = 20;
+  const [scrolled, setScrolled] = useState(0);
+
+  const handleScrolled = () => {
+    setScrolled(window.scrollY);
+  };
+
+  useEffect(() => {
+    document.addEventListener("scroll", handleScrolled);
+
+    return () => {
+      document.removeEventListener("scroll", handleScrolled);
+    };
+  }, []);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-white h-16 flex items-center">
+    <div
+      className={`${
+        scrolled > 0 ? "shadow-3xl" : ""
+      } sticky top-0 z-50 w-full bg-white h-16 flex items-center`}
+    >
       <nav className="container flex justify-between items-center">
         {/* navbar */}
         <NavDesktop links={linksNav} />
