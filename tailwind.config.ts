@@ -22,6 +22,8 @@ const config = {
         "3xl": "0 35px 60px -15px rgba(0, 0, 0, 0.4)",
       },
       colors: {
+        "secondary-color": "#2dc071",
+        "primary-color": "#23856d",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
