@@ -4,10 +4,8 @@ import React, { useEffect, useState } from "react";
 import CarouselElement from "./Carousel";
 
 const ProductsPreviewCarousel = () => {
-  
-
   return (
-    <div className="container-section hidden md:flex bg-primary-color p-20">
+    <div className="container-section hidden md:flex bg-gray-100 p-20">
       <CarouselElement />
     </div>
   );

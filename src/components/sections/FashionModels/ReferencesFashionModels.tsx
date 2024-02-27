@@ -19,8 +19,8 @@ const ReferencesFashionModels = () => {
               alt={model.category}
               fill
             />
-            <div className="bg-white absolute bottom-0 w-full">
-              <h4 className="text-center py-2 font-medium opacity-70">
+            <div className="bg-white absolute md:bottom-0 md:left-0 bottom-1 left-1 md:w-full">
+              <h4 className="text-center py-2 px-2 font-medium opacity-70">
                 {model.category}
               </h4>
             </div>
