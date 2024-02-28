@@ -71,6 +71,10 @@
   @apply opacity-80;
 }
 
+.carousel-action-btn {
+  @apply bg-gray-100 border-none cursor-pointer;
+}
+
 .container-section {
   @apply w-full flex flex-col justify-center items-center my-20;
 }
