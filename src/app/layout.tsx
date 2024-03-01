@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { Montserrat } from "next/font/google";
+import { Inter } from "next/font/google";
 
-export const montserrat = Montserrat({
+const inter = Inter({
   subsets: ["latin"],
 });
 
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
-          montserrat.className
+          inter.className
         )}
       >
         {children}
