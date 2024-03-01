@@ -29,7 +29,7 @@ const Header = () => {
     <div
       className={`${
         scrolled > 0 ? "shadow-3xl" : ""
-      } sticky top-0 z-50 w-full bg-white h-16 flex items-center`}
+      } sticky top-0 z-50 w-full bg-white h-16 flex items-center border-b border-gray-200`}
     >
       <nav className="container flex justify-between items-center">
         {/* navbar */}

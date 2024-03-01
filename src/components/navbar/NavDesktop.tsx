@@ -43,7 +43,9 @@ const NavDesktop = ({ links }: NavDesktopProps) => {
             <NavigationMenuItem key={link.title}>
               {link.category ? (
                 <>
-                  <NavigationMenuTrigger>{link.title}</NavigationMenuTrigger>
+                  <NavigationMenuTrigger className="bg-neutral-200">
+                    {link.title}
+                  </NavigationMenuTrigger>
                   <NavigationMenuContent className="min-w-48 pl-2 font-extralight py-2">
                     <ul className="flex flex-col gap-y-2">
                       {Object.values(link.category).map(
@@ -51,12 +53,7 @@ const NavDesktop = ({ links }: NavDesktopProps) => {
                           category // karena berbentuk object jadi ngambil data nya dengan cara Object.values agar menjadi array
                         ) => (
                           <NavigationMenuItem key={category.title}>
-                            <Link
-                              href={category.href}
-                              suppressHydrationWarning={true}
-                            >
-                              {category.title}
-                            </Link>
+                            <Link className="font-light" href={category.href}>{category.title}</Link>
                           </NavigationMenuItem>
                         )
                       )}
@@ -64,7 +61,7 @@ const NavDesktop = ({ links }: NavDesktopProps) => {
                   </NavigationMenuContent>
                 </>
               ) : (
-                <Link href={link.href} suppressHydrationWarning={true}>
+                <Link className="hover:underline font-light" href={link.href}>
                   {link.title}
                 </Link>
               )}

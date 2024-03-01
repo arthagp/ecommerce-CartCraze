@@ -1,8 +1,10 @@
+import Header from "@/components/common/Header";
 import { cn } from "@/lib/utils";
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 
-const inter = Inter({
+const poppins = Poppins({
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -15,9 +17,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body
         className={cn(
           "min-h-screen bg-background antialiased",
-          inter.className
+          poppins.className
         )}
       >
+        <Header />
         {children}
       </body>
     </html>
