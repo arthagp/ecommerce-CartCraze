@@ -6,7 +6,7 @@ const PreviewSale = () => {
   return (
     <div className="w-full flex max-sm:flex-col justify-center items-center my-20 bg-primary-color p-10 max-sm:gap-10 md:p-20 text-white">
       <div className="w-full flex justify-center">
-        <Image src={ImgSale} alt="summer-sale" width={400} height={400} />
+        <Image src={ImgSale} alt="summer-sale" width={400} height={400} priority/>
       </div>
       <div className="w-full flex flex-col gap-10">
         <h4 className="font-medium opacity-60">Winter Wonderland Sale 2024</h4>

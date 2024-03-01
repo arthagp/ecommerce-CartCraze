@@ -13,6 +13,7 @@ const PrewiewList = () => {
           src={MensCloth}
           alt="Men's Clothing"
           className="w-full h-full object-cover absolute inset-0"
+          priority
         />
         <span className="border bg-white px-5 shadow-2xl text-lg font-semibold absolute bottom-4 left-4">
           Men

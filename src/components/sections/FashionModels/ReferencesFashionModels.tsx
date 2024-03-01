@@ -18,6 +18,7 @@ const ReferencesFashionModels = () => {
               src={model.src}
               alt={model.category}
               fill
+              priority
             />
             <div className="bg-white absolute md:bottom-0 md:left-0 bottom-1 left-1 md:w-full">
               <h4 className="text-center py-2 px-2 font-medium opacity-70">
