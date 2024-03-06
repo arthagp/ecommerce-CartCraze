@@ -12,8 +12,9 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Product } from "@/types/product";
+import { Product } from "@/types/Product";
 import LoadingBar from "react-top-loading-bar";
+import api from "@/api/api";
 
 export default function CarouselElement() {
   const [products, setProducts] = useState<Product>([]);
@@ -27,8 +28,7 @@ export default function CarouselElement() {
     try {
       setProgress(40);
       setProgress(60);
-      const response = await fetch("https://fakestoreapi.com/products");
-      const data = await response.json();
+      const data = await api.getAllProducts();
       setProducts(data);
       setProgress(100);
     } catch (error) {
