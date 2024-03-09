@@ -25,6 +25,10 @@ const api = (() => {
     return localStorage.getItem("token");
   }
 
+  function removeToken() {
+    return localStorage.removeItem("token");
+  }
+
   async function login({
     username,
     password,
@@ -68,6 +72,7 @@ const api = (() => {
     putAccessToken,
     getAccessToken,
     fetchWithUrl,
+    removeToken,
   };
 })(); // IIFE (Immediately Invoked Function Expression)
 

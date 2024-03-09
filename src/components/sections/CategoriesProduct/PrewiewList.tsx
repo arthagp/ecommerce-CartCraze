@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
-import MensCloth from "../../../../public/categories/mens-clothing.jpeg";
-import WomenCloth from "../../../../public/categories/womens clothing.jpeg";
-import Jewelry from "../../../../public/categories/jewelry.jpeg";
-import Electronic from "../../../../public/categories/electronics.jpeg";
+import MensCloth from "../../../../public/categories/mens-clothing.png";
+import WomenCloth from "../../../../public/categories/womens clothing.png";
+import Jewelry from "../../../../public/categories/jewelry.png";
+import Electronic from "../../../../public/categories/electronics.png";
 
 const PrewiewList = () => {
   return (
