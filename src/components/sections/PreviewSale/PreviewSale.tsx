@@ -4,7 +4,7 @@ import ImgSale from "../../../../public/discount-summer.png";
 
 const PreviewSale = () => {
   return (
-    <div className="w-full flex max-sm:flex-col justify-center items-center my-20 bg-primary-color p-10 max-sm:gap-10 md:p-20 text-white">
+    <div className="w-full flex max-sm:flex-col justify-center items-center my-20 gap-x-10 lg:gap-x-2 bg-primary-color p-10 max-sm:gap-10 md:p-20 text-white">
       <div className="w-full flex justify-center">
         <Image src={ImgSale} alt="summer-sale" width={400} height={400} priority/>
       </div>
