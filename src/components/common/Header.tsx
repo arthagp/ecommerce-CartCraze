@@ -12,6 +12,7 @@ import api from "@/api/api";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/store";
+import MobileNavbar from "../navbar/MobileNavbar";
 
 const Header = () => {
   /* ISSUE: Karena tidak ada fetchUser dengan AuthUser seperti user/me atau verifyToken, 
@@ -57,14 +58,6 @@ const Header = () => {
     };
   }, []);
 
-  // Menampilkan tombol Logout jika pengguna sudah login
-  const renderLogoutButton = () => {
-    if (authUser) {
-      return <Button onClick={userLogout}>Logout</Button>;
-    }
-    return null;
-  };
-
   return (
     <div
       className={`${
@@ -74,12 +67,14 @@ const Header = () => {
       <nav className="container flex justify-between items-center">
         {/* Navbar */}
         <NavDesktop links={linksNav} />
+        <MobileNavbar />
         {/* Navbar */}
         <div className="flex justify-center items-center gap-x-5 text-blue-500">
           <div className="flex items-center font-semibold gap-x-2">
             <FaRegUser />
-            {renderLogoutButton()}
-            {!authUser && (
+            {authUser ? (
+              <Button onClick={userLogout}>Logout</Button>
+            ) : (
               <>
                 <Link href={"/login"}>Login</Link>
                 <span>/</span>
@@ -87,9 +82,9 @@ const Header = () => {
               </>
             )}
           </div>
-          <div>
+          {/* <div>
             <FiSearch size={iconSize} />
-          </div>
+          </div> */}
           <div className="flex items-center gap-1">
             <Link href={"/"}>
               <SlBasket size={iconSize} />

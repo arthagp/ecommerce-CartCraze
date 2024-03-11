@@ -4,36 +4,15 @@ import LogoNav from "./LogoNav";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-const { fontFamily } = require("tailwindcss/defaultTheme");
-
 import Link from "next/link";
-// import {links} from '@/lib/data/links'
+import { ContentNavbarProps } from "@/types/LinkNavbar";
 
-type NavCategory = {
-  title: string;
-  href: string;
-};
 
-type NavLink = {
-  title: string;
-  href: string;
-  category?: {
-    [key: string]: NavCategory;
-  };
-};
-
-type NavDesktopProps = {
-  links: NavLink[];
-};
-
-const NavDesktop = ({ links }: NavDesktopProps) => {
+const NavDesktop = ({ links }: ContentNavbarProps) => {
   return (
     <div className="hidden lg:flex justify-center items-center gap-x-10">
       <LogoNav />
@@ -53,7 +32,9 @@ const NavDesktop = ({ links }: NavDesktopProps) => {
                           category // karena berbentuk object jadi ngambil data nya dengan cara Object.values agar menjadi array
                         ) => (
                           <NavigationMenuItem key={category.title}>
-                            <Link className="font-light" href={category.href}>{category.title}</Link>
+                            <Link className="font-light" href={category.href}>
+                              {category.title}
+                            </Link>
                           </NavigationMenuItem>
                         )
                       )}
