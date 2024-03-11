@@ -1,3 +1,5 @@
+import Cookies from "js-cookie";
+
 const api = (() => {
   const BASE_URL = `https://fakestoreapi.com`;
 
@@ -12,21 +14,21 @@ const api = (() => {
       ...options,
       headers: {
         ...options.headers,
-        Authorization: `Bearer ${getAccessToken()}`, // Perhatikan penggunaan fungsi getAccessToken()
+        Authorization: `Bearer ${getAccessToken()}`,
       },
     });
   }
 
   function putAccessToken(token: string) {
-    return localStorage.setItem("token", token);
+    return Cookies.set("token", token);
   }
 
   function getAccessToken() {
-    return localStorage.getItem("token");
+    return Cookies.get("token");
   }
 
   function removeToken() {
-    return localStorage.removeItem("token");
+    return Cookies.remove("token");
   }
 
   async function login({

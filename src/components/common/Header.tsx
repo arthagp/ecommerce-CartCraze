@@ -11,6 +11,7 @@ import { FaRegUser } from "react-icons/fa";
 import api from "@/api/api";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { useStore } from "@/store";
 
 const Header = () => {
   /* ISSUE: Karena tidak ada fetchUser dengan AuthUser seperti user/me atau verifyToken, 
@@ -18,12 +19,13 @@ const Header = () => {
   value dari localStorage yang mana ini merupakan clientSide yang berada di browser, 
   jadi untuk memunculkan Button Logout harus reload terlebih dahulu 
   
-  TEMPORARY SOLUTION: Dengan menambahkan depend scrolled ke useEffect, maka ketika scrolled dia render ulang,
+  TEMPORARY SOLUTION: Dengan menambahkan depend products ke useEffect, maka ketika products dia render ulang,
   */
 
   const iconSize = 20;
   const [scrolled, setScrolled] = useState(0);
   const [authUser, setAuthUser] = useState<string | null>(null);
+  const { products } = useStore((state) => state);
   const router = useRouter();
 
   const handleScrolled = () => {
@@ -31,7 +33,7 @@ const Header = () => {
   };
 
   const getAuthUser = () => {
-    const token = localStorage.getItem("token");
+    const token = api.getAccessToken();
     if (token) {
       setAuthUser(token);
     }
@@ -45,7 +47,7 @@ const Header = () => {
 
   useEffect(() => {
     getAuthUser();
-  }, [scrolled]);
+  }, [products]);
 
   useEffect(() => {
     document.addEventListener("scroll", handleScrolled);

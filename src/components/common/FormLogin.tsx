@@ -23,15 +23,13 @@ const FormLogin = () => {
     try {
       const response = await api.login({ username, password } as UserLogin);
       if (response) {
-        api.putAccessToken(response);
+        api.putAccessToken(response)
         resetUsername();
         resetPassword();
         router.push("/");
         toast({
           title: "Login Success",
         });
-        // setTimeout(() => {
-        // }, 1000);
       } else {
         toast({
           title: "Login Failed",
@@ -39,6 +37,9 @@ const FormLogin = () => {
       }
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Login Failed",
+      });
     }
   };
 

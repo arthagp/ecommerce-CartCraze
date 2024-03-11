@@ -15,9 +15,10 @@ import { Button } from "@/components/ui/button";
 import { Product } from "@/types/Product";
 import LoadingBar from "react-top-loading-bar";
 import api from "@/api/api";
+import { useStore } from "@/store";
 
 export default function CarouselElement() {
-  const [products, setProducts] = useState<Product>([]);
+  const {products, setProducts} = useStore((state) => state)
   const [progress, setProgress] = useState(0);
 
   const plugin = React.useRef(
@@ -28,7 +29,7 @@ export default function CarouselElement() {
     try {
       setProgress(40);
       setProgress(60);
-      const data = await api.getAllProducts();
+      const data = await api.getAllProducts() as Product[];
       setProducts(data);
       setProgress(100);
     } catch (error) {
