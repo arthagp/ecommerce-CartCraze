@@ -6,6 +6,8 @@ import useInput from "@/hooks/useInput";
 import api from "@/api/api";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
+import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 
 type UserLogin = {
   username: string;
@@ -23,7 +25,7 @@ const FormLogin = () => {
     try {
       const response = await api.login({ username, password } as UserLogin);
       if (response) {
-        api.putAccessToken(response)
+        api.putAccessToken(response);
         resetUsername();
         resetPassword();
         router.push("/");
@@ -45,16 +47,16 @@ const FormLogin = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-3 w-[350px]">
-      <label htmlFor="username">Username</label>
-      <input
+      <Label htmlFor="username">Username</Label>
+      <Input
         id="username"
         className="border rounded-md h-10 pl-2"
         type="text"
         value={username}
         onChange={onChangeUsername}
       />
-      <label htmlFor="password">Password</label>
-      <input
+      <Label htmlFor="password">Password</Label>
+      <Input
         id="password"
         className="border rounded-md h-10 pl-2"
         type="password"
