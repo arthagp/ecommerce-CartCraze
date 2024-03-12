@@ -11,7 +11,6 @@ import {
 import Link from "next/link";
 import { ContentNavbarProps } from "@/types/LinkNavbar";
 
-
 const NavDesktop = ({ links }: ContentNavbarProps) => {
   return (
     <div className="hidden lg:flex justify-center items-center gap-x-10">
@@ -32,7 +31,10 @@ const NavDesktop = ({ links }: ContentNavbarProps) => {
                           category // karena berbentuk object jadi ngambil data nya dengan cara Object.values agar menjadi array
                         ) => (
                           <NavigationMenuItem key={category.title}>
-                            <Link className="font-light" href={category.href}>
+                            <Link
+                              className="font-light hover:underline"
+                              href={category.href}
+                            >
                               {category.title}
                             </Link>
                           </NavigationMenuItem>

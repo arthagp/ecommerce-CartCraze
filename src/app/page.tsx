@@ -14,7 +14,6 @@ export default function Home() {
       <ReferencesFashionModels />
       <ProductsPreviewCarousel />
       <PreviewSale />
-      <Footer />
     </>
   );
 }

@@ -4,8 +4,12 @@ export const links = [
     href: "/",
   },
   {
-    title: "Shop",
-    href: "/shop",
+    title: "All Products",
+    href: "/all-products",
+  },
+  {
+    title: "Categories",
+    href: "/categories",
     category: {
       electronics: {
         title: "electronics",
@@ -36,9 +40,5 @@ export const links = [
   {
     title: "Contact",
     href: "/contact",
-  },
-  {
-    title: "Pages",
-    href: "/pages",
   },
 ];

@@ -14,7 +14,7 @@ const ContentMobileNav = ({ links }: ContentNavbarProps) => {
             >
               {link.title}
             </Link>
-            {link.category && link.title === "Shop" && (
+            {link.category && link.title === "Categories" && (
               <ul>
                 {Object.values(link.category).map((category, index) => (
                   <li key={index}>
