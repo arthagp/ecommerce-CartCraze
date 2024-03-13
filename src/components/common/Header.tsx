@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { FiSearch } from "react-icons/fi";
 import { SlBasket } from "react-icons/sl";
 import { CiHeart } from "react-icons/ci";
 import NavDesktop from "../navbar/NavDesktop";

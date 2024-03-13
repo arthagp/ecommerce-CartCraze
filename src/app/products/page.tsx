@@ -25,7 +25,7 @@ const ProductsPage = () => {
                 <li>
                   <Link
                     className="font-light opacity-60"
-                    href={"/all-products"}
+                    href={"/products"}
                   >
                     All-Products
                   </Link>

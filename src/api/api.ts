@@ -110,6 +110,15 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getItemProduct(id: string){
+    const response = await fetchWithUrl(`${BASE_URL}/products/${id}`);
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
   return {
     login,
     getAllProducts,
@@ -121,6 +130,7 @@ const api = (() => {
     getCategoriesMensClothing,
     getCategoriesWomensClothing,
     getCategoriesElectronics,
+    getItemProduct,
   };
 })(); // IIFE (Immediately Invoked Function Expression)
 

@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center bg-gray-100 p-10 shadow-xl">
+      <div className="flex justify-between items-center bg-gray-200 p-10 shadow-xl">
         <div className="flex items-center">
           <LogoNav />
         </div>
@@ -70,7 +70,7 @@ const Footer = () => {
         </div>
       </div>
       {/*  */}
-      <div className="flex justify-center md:justify-start items-center bg-gray-100 p-5">
+      <div className="flex justify-center md:justify-start items-center bg-gray-200 p-5">
         <h2 className="ml-5 text-gray-600 font-medium">
           Copyright&copy; Artha Gusfi P since 2024
         </h2>
