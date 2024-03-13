@@ -10,7 +10,6 @@ import api from "@/api/api";
 
 const ProductDetailItem = ({ slug }: { slug: string }) => {
   const [productItem, setProductItem] = useState<Product>({} as Product);
-  const [showFullDescription, setShowFullDescription] = useState(false);
 
   const fetchItemProduct = async () => {
     try {
@@ -21,16 +20,11 @@ const ProductDetailItem = ({ slug }: { slug: string }) => {
     }
   };
 
-
   useEffect(() => {
     fetchItemProduct();
   }, []);
 
   const sizeIcon = 15;
-
-  const toggleDescription = () => {
-    setShowFullDescription(!showFullDescription);
-  };
 
   if (!productItem) {
     return null;
@@ -38,7 +32,7 @@ const ProductDetailItem = ({ slug }: { slug: string }) => {
 
   return (
     <div className="flex gap-10 max-sm:flex-col justify-center items-center p-10 bg-gray-100">
-      <div className="w-96 h-96 relative overflow-hidden rounded-lg">
+      <div className="w-80 h-80 md:w-96 md:h-96 relative overflow-hidden rounded-lg">
         <Image
           className="w-full h-full object-fit absolute inset-0"
           src={productItem.image}
@@ -60,23 +54,9 @@ const ProductDetailItem = ({ slug }: { slug: string }) => {
         <p className="text-gray-600 mb-4">
           Available: <span className="text-green-600">In Stock</span>
         </p>
-        <div
-          className={`mb-4 ${
-            showFullDescription
-              ? "max-h-full overflow-y-auto"
-              : "max-h-[7em] overflow-hidden"
-          }`}
-        >
-          <p className="text-gray-600 max-w-xs">{productItem.description}</p>
-        </div>
-        {/* {productItem.description.split("\n").length > 7 && (
-          <button
-            onClick={toggleDescription}
-            className="text-blue-500 underline"
-          >
-            {showFullDescription ? "Read Less" : "Read More"}
-          </button>
-        )} */}
+        <p className="text-gray-600 max-w-xs text-sm mb-4">
+          {productItem.description}
+        </p>
         <div className="flex items-center mb-4">
           <Button className="mr-3">Buy This Item</Button>
           <div className="flex gap-x-3">
