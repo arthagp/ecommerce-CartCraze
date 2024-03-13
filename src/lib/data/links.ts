@@ -13,19 +13,19 @@ export const links = [
     category: {
       electronics: {
         title: "electronics",
-        href: "/electronics",
+        href: "/category/electronics",
       },
       jewelery: {
         title: "jewelery",
-        href: "/jewelery",
+        href: "/category/jewelery",
       },
       mensClothing: {
         title: `men's clothing`,
-        href: "/mens-clothing",
+        href: `/category/mens-clothing`,
       },
       womensClothing: {
         title: `women's clothing`,
-        href: "/womens-clothing",
+        href: `/category/womens-clothing`,
       },
     },
   },

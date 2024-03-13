@@ -4,3 +4,9 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export function separatePathname(pathname: string){
+  const path = pathname.split('/')
+
+  return path[2]
+}

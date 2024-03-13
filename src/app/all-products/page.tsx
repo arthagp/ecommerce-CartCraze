@@ -1,5 +1,5 @@
-import Categories from "@/components/all-products/Categories";
-import ProductsList from "@/components/all-products/ProductsList";
+import Categories from "@/components/common/Categories";
+import ProductsList from "@/components/common/ProductsList";
 import Footer from "@/components/common/Footer";
 import Link from "next/link";
 import React from "react";

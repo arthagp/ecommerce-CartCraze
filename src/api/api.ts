@@ -51,20 +51,62 @@ const api = (() => {
 
     const responseJson = await response.json();
     const { token } = responseJson;
-
     if (!responseJson) {
       throw new Error("Something went wrong");
     }
-
     return token;
   }
 
   async function getAllProducts() {
-    const response = await fetchWithUrl(`${BASE_URL}/products`, {
-      method: "GET",
-    });
+    const response = await fetchWithUrl(`${BASE_URL}/products`);
     const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
 
+  async function getCategoriesJewelry() {
+    const response = await fetchWithUrl(
+      `${BASE_URL}/products/category/jewelery`
+    );
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
+  async function getCategoriesMensClothing() {
+    const response = await fetchWithUrl(
+      `${BASE_URL}/products/category/men's clothing`
+    );
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
+  async function getCategoriesWomensClothing() {
+    const response = await fetchWithUrl(
+      `${BASE_URL}/products/category/women's clothing`
+    );
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
+  async function getCategoriesElectronics() {
+    const response = await fetchWithUrl(
+      `${BASE_URL}/products/category/electronics`
+    );
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
     return responseJson;
   }
 
@@ -75,6 +117,10 @@ const api = (() => {
     getAccessToken,
     fetchWithUrl,
     removeToken,
+    getCategoriesJewelry,
+    getCategoriesMensClothing,
+    getCategoriesWomensClothing,
+    getCategoriesElectronics,
   };
 })(); // IIFE (Immediately Invoked Function Expression)
 
