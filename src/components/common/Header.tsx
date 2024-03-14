@@ -13,6 +13,13 @@ import { useRouter } from "next/navigation";
 import { useStore } from "@/store";
 import MobileNavbar from "../navbar/MobileNavbar";
 
+type CartProduct = {
+  id: number,
+  userId: number,
+  date: Date,
+  products: [{ productId: number; quantity: number }];
+};
+
 const Header = () => {
   /* ISSUE: Karena tidak ada fetchUser dengan AuthUser seperti user/me atau verifyToken, 
   maka untuk handle button Logout/login, tidak secara langsung muncul karena authUser berisi 
@@ -25,8 +32,18 @@ const Header = () => {
   const iconSize = 20;
   const [scrolled, setScrolled] = useState(0);
   const [authUser, setAuthUser] = useState<string | null>(null);
+  const [carts, setCarts] = useState<CartProduct>();
   const { products } = useStore((state) => state);
   const router = useRouter();
+
+  const handleCartDisplay = async () => {
+    try {
+      const data = await api.getCartsByCartUserId_2();
+      setCarts(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleScrolled = () => {
     setScrolled(window.scrollY);
@@ -50,12 +67,23 @@ const Header = () => {
   }, [products]);
 
   useEffect(() => {
+    handleCartDisplay();
     document.addEventListener("scroll", handleScrolled);
 
     return () => {
       document.removeEventListener("scroll", handleScrolled);
     };
   }, []);
+
+  /*
+  {
+    id: 3,
+    userId: 2,
+    date: '2020-03-01T00:00:00.000Z',
+    products: [ { productId: 1, quantity: 2 }, { productId: 9, quantity: 1 } ],
+    __v: 0
+  }
+  */
 
   return (
     <div
@@ -81,14 +109,13 @@ const Header = () => {
               </>
             )}
           </div>
-          {/* <div>
-            <FiSearch size={iconSize} />
-          </div> */}
           <div className="flex items-center gap-1">
             <Link href={"/"}>
               <SlBasket size={iconSize} />
             </Link>
-            <span className="text-sm font-light">1</span>
+            <span className="text-sm font-light">
+              {!carts ? 0 : carts?.products.length}
+            </span>
           </div>
           <div className="flex items-center gap-1">
             <Link href={"/"}>

@@ -110,8 +110,46 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getItemProduct(id: string){
+  async function getItemProduct(id: string) {
     const response = await fetchWithUrl(`${BASE_URL}/products/${id}`);
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
+  //userId 2 -> carts 3
+
+  async function getCartsByCartUserId_2() {
+    const response = await fetchWithUrl(`${BASE_URL}/carts/3`);
+    const responsejSon = await response.json();
+    if (!responsejSon) {
+      throw new Error("Something went wrong");
+    }
+    return responsejSon;
+  }
+
+  // ADD NEW CARTS
+
+  type AddNewCartProps = {
+    productId: number;
+    quantity: number;
+  };
+
+  async function addNewCartByUserId_2({
+    productId,
+    quantity,
+  }: AddNewCartProps) {
+    const response = await fetchWithUrl(`${BASE_URL}/carts`, {
+      method: "POST",
+      body: JSON.stringify({
+        userId: 2,
+        date: new Date(),
+        products: [{ productId, quantity }],
+      }),
+    });
+
     const responseJson = await response.json();
     if (!responseJson) {
       throw new Error("Something went wrong");
@@ -131,6 +169,8 @@ const api = (() => {
     getCategoriesWomensClothing,
     getCategoriesElectronics,
     getItemProduct,
+    getCartsByCartUserId_2,
+    addNewCartByUserId_2,
   };
 })(); // IIFE (Immediately Invoked Function Expression)
 
