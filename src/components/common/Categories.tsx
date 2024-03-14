@@ -1,17 +1,69 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import MensCloth from "../../../public/categories/mens-clothing.png";
 import WomenCloth from "../../../public/categories/womens clothing.png";
 import Jewelry from "../../../public/categories/jewelry.png";
 import Electronic from "../../../public/categories/electronics.png";
 import Image from "next/image";
 import { useStore } from "@/store";
+import api from "@/api/api";
+import { Product } from "@/types/Product";
 
 const Categories = () => {
-  const { jewelery, mensClothing, womensClothing, electronics } = useStore(
-    (state) => state
-  );
+  const {
+    jewelery,
+    mensClothing,
+    womensClothing,
+    electronics,
+    setElectronics,
+    setJewelery,
+    setMensClothing,
+    setWomensClothing,
+  } = useStore((state) => state);
+
+  const fetchJewelry = async () => {
+    try {
+      const data = (await api.getCategoriesJewelry()) as Product[];
+      setJewelery(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchElectronics = async () => {
+    try {
+      const data = (await api.getCategoriesElectronics()) as Product[];
+      setElectronics(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchWomensClothing = async () => {
+    try {
+      const data = (await api.getCategoriesWomensClothing()) as Product[];
+      setWomensClothing(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchMensClohting = async () => {
+    try {
+      const data = (await api.getCategoriesMensClothing()) as Product[];
+      setMensClothing(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchElectronics();
+    fetchJewelry();
+    fetchMensClohting();
+    fetchWomensClothing();
+  }, []);
 
   return (
     <div className="flex flex-col md:flex-row justify-center items-center gap-10">

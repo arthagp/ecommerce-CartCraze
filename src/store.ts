@@ -7,11 +7,13 @@ interface StoreState {
   mensClothing: Product[];
   womensClothing: Product[];
   electronics: Product[];
+  filteredProducts: Product[];
   setProducts: (products: Product[]) => void;
   setWomensClothing: (womensClothing: Product[]) => void;
   setMensClothing: (mensClothing: Product[]) => void;
   setElectronics: (electronics: Product[]) => void;
   setJewelery: (jewelery: Product[]) => void;
+  setFilteredProducts: (filteredProducts: Product[]) => void;
 }
 
 export const useStore = create<StoreState>((set) => ({
@@ -25,4 +27,7 @@ export const useStore = create<StoreState>((set) => ({
   setMensClothing: (mensClothing: Product[]) => set({ mensClothing }),
   electronics: [],
   setElectronics: (electronics: Product[]) => set({ electronics }),
+  filteredProducts: [],
+  setFilteredProducts: (filteredProducts: Product[]) =>
+    set({ filteredProducts }),
 }));
