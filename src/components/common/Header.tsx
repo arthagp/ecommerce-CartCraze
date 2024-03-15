@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { SlBasket } from "react-icons/sl";
 import { CiHeart } from "react-icons/ci";
 import NavDesktop from "../navbar/NavDesktop";
 import { links as linksNav } from "@/lib/data/links";
@@ -12,13 +11,7 @@ import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/store";
 import MobileNavbar from "../navbar/MobileNavbar";
-
-type CartProduct = {
-  id: number,
-  userId: number,
-  date: Date,
-  products: [{ productId: number; quantity: number }];
-};
+import ModalCart from "./ModalCart";
 
 const Header = () => {
   /* ISSUE: Karena tidak ada fetchUser dengan AuthUser seperti user/me atau verifyToken, 
@@ -29,12 +22,12 @@ const Header = () => {
   TEMPORARY SOLUTION: Dengan menambahkan depend products ke useEffect, maka ketika products dia render ulang,
   */
 
-  const iconSize = 20;
   const [scrolled, setScrolled] = useState(0);
   const [authUser, setAuthUser] = useState<string | null>(null);
-  const [carts, setCarts] = useState<CartProduct>();
-  const { products } = useStore((state) => state);
+  const { products, carts, setCarts } = useStore((state) => state);
   const router = useRouter();
+
+  console.log(carts);
 
   const handleCartDisplay = async () => {
     try {
@@ -75,16 +68,6 @@ const Header = () => {
     };
   }, []);
 
-  /*
-  {
-    id: 3,
-    userId: 2,
-    date: '2020-03-01T00:00:00.000Z',
-    products: [ { productId: 1, quantity: 2 }, { productId: 9, quantity: 1 } ],
-    __v: 0
-  }
-  */
-
   return (
     <div
       className={`${
@@ -110,11 +93,12 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center gap-1">
+            {/* diberikan kondisi nanti jika belum login maka muncul modal login */}
             <Link href={"/"}>
-              <SlBasket size={iconSize} />
+              <ModalCart />
             </Link>
             <span className="text-sm font-light">
-              {!carts ? 0 : carts?.products.length}
+              {authUser !== null ? carts.products.length : 0}
             </span>
           </div>
           <div className="flex items-center gap-1">
