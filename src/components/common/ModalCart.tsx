@@ -24,6 +24,14 @@ type ProductDetail = {
 const ModalCart = () => {
   const { carts } = useStore((state) => state);
   const [productCart, setProductCart] = useState<ProductDetail[]>([]);
+  const [authUser, setAuthUser] = useState<string | null>(null);
+
+  const getAuthUser = () => {
+    const token = api.getAccessToken();
+    if (token) {
+      setAuthUser(token);
+    }
+  };
 
   const fetchProductCart = async () => {
     const productIds = carts.products.map((product) => product.productId);
@@ -46,13 +54,16 @@ const ModalCart = () => {
     }
   };
 
+  console.log(!authUser);
+
   useEffect(() => {
     fetchProductCart();
+    getAuthUser();
   }, [carts]); // depend on carts
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
+      <DialogTrigger>
         <SlBasket size={20} />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">

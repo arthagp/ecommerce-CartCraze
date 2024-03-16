@@ -91,12 +91,9 @@ const Header = () => {
             )}
           </div>
           <div className="flex items-center gap-1">
-            {/* diberikan kondisi nanti jika belum login maka muncul modal login */}
-            <Link href={"/"}>
-              <ModalCart />
-            </Link>
+            <Link href={"/"}>{authUser && <ModalCart />}</Link>
             <span className="text-sm font-light">
-              {authUser !== null ? carts.products.length : 0}
+              {authUser && carts.products.length}
             </span>
           </div>
           <div className="flex items-center gap-1">
