@@ -157,6 +157,15 @@ const api = (() => {
     return responseJson;
   }
 
+  async function getSingleProduct(productId: number) {
+    const response = await fetchWithUrl(`${BASE_URL}/products/${productId}`);
+    const responseJson = await response.json();
+    if (!responseJson) {
+      throw new Error("Something went wrong");
+    }
+    return responseJson;
+  }
+
   return {
     login,
     getAllProducts,
@@ -171,6 +180,7 @@ const api = (() => {
     getItemProduct,
     getCartsByCartUserId_2,
     addNewCartByUserId_2,
+    getSingleProduct,
   };
 })(); // IIFE (Immediately Invoked Function Expression)
 

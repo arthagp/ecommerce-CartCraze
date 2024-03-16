@@ -27,8 +27,6 @@ const Header = () => {
   const { products, carts, setCarts } = useStore((state) => state);
   const router = useRouter();
 
-  console.log(carts);
-
   const handleCartDisplay = async () => {
     try {
       const data = await api.getCartsByCartUserId_2();
