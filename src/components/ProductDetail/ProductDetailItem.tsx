@@ -14,7 +14,6 @@ const ProductDetailItem = ({ slug }: { slug: string }) => {
   const fetchItemProduct = async () => {
     try {
       const response = await api.getItemProduct(slug);
-      console.log(response);
       setProductItem(response);
     } catch (error) {
       console.log(error);
