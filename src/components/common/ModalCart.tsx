@@ -54,7 +54,6 @@ const ModalCart = () => {
     }
   };
 
-  console.log(!authUser);
 
   useEffect(() => {
     fetchProductCart();

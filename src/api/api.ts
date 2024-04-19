@@ -1,10 +1,13 @@
 import Cookies from "js-cookie";
+import { UserLogin } from "@/types/User";
+import { Product } from "@/types/Product";
+import { CartProduct } from "@/types/CartProduct";
 
 const api = (() => {
   const BASE_URL = `https://fakestoreapi.com`;
 
   interface RequestOptions {
-    headers?: Record<string, string>;
+    headers?: Record<string, string>; // utility bawaan, ini memberikan tipe data object Record<K, T> dengan key bertipe string dan value dari key T juga berupa string
     method?: string;
     body?: string;
   }
@@ -31,13 +34,7 @@ const api = (() => {
     return Cookies.remove("token");
   }
 
-  async function login({
-    username,
-    password,
-  }: {
-    username: string;
-    password: string;
-  }) {
+  async function login({ username, password }: UserLogin): Promise<string> {
     const response = await fetchWithUrl(`${BASE_URL}/auth/login`, {
       method: "POST",
       headers: {
@@ -56,8 +53,7 @@ const api = (() => {
     }
     return token;
   }
-
-  async function getAllProducts() {
+  async function getAllProducts(): Promise<Product[]> {
     const response = await fetchWithUrl(`${BASE_URL}/products`);
     const responseJson = await response.json();
     if (!responseJson) {
@@ -66,7 +62,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getCategoriesJewelry() {
+  async function getCategoriesJewelry(): Promise<Product[]> {
     const response = await fetchWithUrl(
       `${BASE_URL}/products/category/jewelery`
     );
@@ -77,7 +73,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getCategoriesMensClothing() {
+  async function getCategoriesMensClothing(): Promise<Product[]> {
     const response = await fetchWithUrl(
       `${BASE_URL}/products/category/men's clothing`
     );
@@ -88,7 +84,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getCategoriesWomensClothing() {
+  async function getCategoriesWomensClothing(): Promise<Product[]> {
     const response = await fetchWithUrl(
       `${BASE_URL}/products/category/women's clothing`
     );
@@ -99,7 +95,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getCategoriesElectronics() {
+  async function getCategoriesElectronics(): Promise<Product[]> {
     const response = await fetchWithUrl(
       `${BASE_URL}/products/category/electronics`
     );
@@ -110,7 +106,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getItemProduct(id: string) {
+  async function getItemProduct(id: string): Promise<Product> {
     const response = await fetchWithUrl(`${BASE_URL}/products/${id}`);
     const responseJson = await response.json();
     if (!responseJson) {
@@ -121,7 +117,7 @@ const api = (() => {
 
   //userId 2 -> carts 3
 
-  async function getCartsByCartUserId_2() {
+  async function getCartsByCartUserId_2(): Promise<CartProduct> {
     const response = await fetchWithUrl(`${BASE_URL}/carts/3`);
     const responsejSon = await response.json();
     if (!responsejSon) {
@@ -140,7 +136,7 @@ const api = (() => {
   async function addNewCartByUserId_2({
     productId,
     quantity,
-  }: AddNewCartProps) {
+  }: AddNewCartProps): Promise<CartProduct> {
     const response = await fetchWithUrl(`${BASE_URL}/carts`, {
       method: "POST",
       body: JSON.stringify({
@@ -157,7 +153,7 @@ const api = (() => {
     return responseJson;
   }
 
-  async function getSingleProduct(productId: number) {
+  async function getSingleProduct(productId: number): Promise<Product> {
     const response = await fetchWithUrl(`${BASE_URL}/products/${productId}`);
     const responseJson = await response.json();
     if (!responseJson) {

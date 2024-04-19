@@ -8,11 +8,14 @@ import { Product } from "@/types/Product";
 import SearchBar from "./SearchBar";
 
 const ProductsList = () => {
-  const { products, setProducts, filteredProducts } = useStore((state) => state);
+  const { products, setProducts, filteredProducts } = useStore(
+    (state) => state
+  );
 
   const fetchProducts = async () => {
     try {
-      const data = (await api.getAllProducts()) as Product[];
+      const data = await api.getAllProducts();
+      // ada dua cara dalam memberikan tipe pada variable di atas yaitu dengan cara memberikan type return pada getAllProducts look at file api, dan dengan cara as
       setProducts(data);
     } catch (error) {
       console.log(error);

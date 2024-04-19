@@ -8,11 +8,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
-
-type UserLogin = {
-  username: string;
-  password: string;
-};
+import { UserLogin } from "@/types/User";
 
 const FormLogin = () => {
   const [username, onChangeUsername, resetUsername] = useInput("");

@@ -8,7 +8,6 @@ import Electronic from "../../../public/categories/electronics.png";
 import Image from "next/image";
 import { useStore } from "@/store";
 import api from "@/api/api";
-import { Product } from "@/types/Product";
 
 const Categories = () => {
   const {
@@ -24,7 +23,7 @@ const Categories = () => {
 
   const fetchJewelry = async () => {
     try {
-      const data = (await api.getCategoriesJewelry()) as Product[];
+      const data = await api.getCategoriesJewelry();
       setJewelery(data);
     } catch (error) {
       console.log(error);
@@ -33,7 +32,7 @@ const Categories = () => {
 
   const fetchElectronics = async () => {
     try {
-      const data = (await api.getCategoriesElectronics()) as Product[];
+      const data = await api.getCategoriesElectronics();
       setElectronics(data);
     } catch (error) {
       console.log(error);
@@ -42,7 +41,7 @@ const Categories = () => {
 
   const fetchWomensClothing = async () => {
     try {
-      const data = (await api.getCategoriesWomensClothing()) as Product[];
+      const data = await api.getCategoriesWomensClothing();
       setWomensClothing(data);
     } catch (error) {
       console.log(error);
@@ -51,7 +50,7 @@ const Categories = () => {
 
   const fetchMensClohting = async () => {
     try {
-      const data = (await api.getCategoriesMensClothing()) as Product[];
+      const data = await api.getCategoriesMensClothing();
       setMensClothing(data);
     } catch (error) {
       console.log(error);

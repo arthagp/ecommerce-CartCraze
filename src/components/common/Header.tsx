@@ -30,6 +30,7 @@ const Header = () => {
   const handleCartDisplay = async () => {
     try {
       const data = await api.getCartsByCartUserId_2();
+      console.log(data);
       setCarts(data);
     } catch (error) {
       console.log(error);
